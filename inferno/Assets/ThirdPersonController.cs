@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
 {
-    
+
     public float speed;
     public float slopeForce;
     public float slopeForceRayLength;
-    /*public float jumpForce = 10f;*/
+    public float jumpForce = 10f;
+    /*float gravity = -9.81f;*/
     //Update is called once per frame
-    
-    
+    public Rigidbody rb;
+    public CapsuleCollider col;
+
+    public LayerMask groundLayer;
+
     void Update()
     {
         PlayerMovement();        
@@ -22,27 +26,47 @@ public class ThirdPersonController : MonoBehaviour
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
 
-       
+
         Vector3 playerMovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
-        //transform.Translate(playerMovement, Space.Self);
-        transform.position += new Vector3(hor, ver);
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        transform.Translate(playerMovement, Space.Self);
+
+        if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            Vector3 playerJump = new Vector3(0f, 1f, 0f) * jumpForce * Time.deltaTime;
-            transform.Translate(playerJump, Space.Self);
-        }*/
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
         if (onSlope())
         {
-            transform.Translate(Vector3.down, Space.Self);   
+            transform.Translate(Vector3.down, Space.Self);
+
+            /*if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            else
+            {
+                
+            }*/
         }
     }
-   private bool onSlope()
+    private bool onSlope()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, slopeForceRayLength))
             if (hit.normal != Vector3.up)
                 return true;
-        
+
+        return false;
+    }
+
+    private bool isGrounded()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, slopeForceRayLength))
+        {
+            if (hit.collider != null)
+                return true;
+        }
         return false;
     }
 }

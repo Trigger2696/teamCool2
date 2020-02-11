@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967411455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -490, y: 223}
+  m_AnchoredPosition: {x: -337.9, y: 126}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970944116
@@ -530,7 +530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -444, y: 223}
+  m_AnchoredPosition: {x: -293.3, y: 124.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1122551643
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 1455678701}
   - component: {fileID: 1455678700}
   - component: {fileID: 1455678706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,9 +707,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa48285f8afe3344873a74f3c381a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 10
   slopeForce: 1
   slopeForceRayLength: 1
+  jumpForce: 5
+  rb: {fileID: 1455678701}
+  col: {fileID: 1455678702}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!54 &1455678701
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -811,7 +817,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1455678699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b1e1f6ac8af5b4f8228bb36ba8e11c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fb32d6487e8d504f98195e98f3c06b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1122551643}
@@ -1471,7 +1477,7 @@ GameObject:
   - component: {fileID: 1759932712}
   - component: {fileID: 1759932711}
   - component: {fileID: 1759932714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1570,7 +1576,7 @@ GameObject:
   - component: {fileID: 1870460461}
   - component: {fileID: 1870460460}
   - component: {fileID: 1870460459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
